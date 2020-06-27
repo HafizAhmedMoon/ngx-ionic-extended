@@ -18,5 +18,12 @@
       }
     }
   },
-  "projects": {}
+  "projects": {
+    "example": {
+      "tags": []
+    },
+    "ngx-ionic-extended": {
+      "tags": []
+    }
+  }
 }

@@ -15,7 +15,9 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "ngx-ionic-extended": ["libs/ngx-ionic-extended/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

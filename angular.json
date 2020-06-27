@@ -1,7 +1,151 @@
 {
   "version": 1,
-  "projects": {},
+  "projects": {
+    "example": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "apps/example",
+      "sourceRoot": "apps/example/src",
+      "prefix": "ngx-ionic-extended",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/example",
+            "index": "apps/example/src/index.html",
+            "main": "apps/example/src/main.ts",
+            "polyfills": "apps/example/src/polyfills.ts",
+            "tsConfig": "apps/example/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "apps/example/src/favicon.ico",
+              "apps/example/src/assets"
+            ],
+            "styles": ["apps/example/src/styles.css"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/example/src/environments/environment.ts",
+                  "with": "apps/example/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "example:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "example:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "example:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/example/tsconfig.app.json",
+              "apps/example/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!apps/example/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/example/jest.config.js",
+            "tsConfig": "apps/example/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "apps/example/src/test-setup.ts"
+          }
+        }
+      }
+    },
+    "ngx-ionic-extended": {
+      "projectType": "library",
+      "root": "libs/ngx-ionic-extended",
+      "sourceRoot": "libs/ngx-ionic-extended/src",
+      "prefix": "ngx-ionic",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/angular:package",
+          "options": {
+            "tsConfig": "libs/ngx-ionic-extended/tsconfig.lib.json",
+            "project": "libs/ngx-ionic-extended/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/ngx-ionic-extended/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/ngx-ionic-extended/tsconfig.lib.json",
+              "libs/ngx-ionic-extended/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/ngx-ionic-extended/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/ngx-ionic-extended/jest.config.js",
+            "tsConfig": "libs/ngx-ionic-extended/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/ngx-ionic-extended/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {}
+    }
+  },
   "cli": {
-    "defaultCollection": "@nrwl/workspace"
-  }
+    "defaultCollection": "@nrwl/angular",
+    "analytics": false
+  },
+  "schematics": {
+    "@nrwl/angular:application": {
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
+    },
+    "@nrwl/angular:library": {
+      "unitTestRunner": "jest"
+    }
+  },
+  "defaultProject": "example"
 }
