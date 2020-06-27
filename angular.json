@@ -1,4 +1,5 @@
 {
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
   "projects": {
     "example": {
@@ -19,9 +20,46 @@
             "aot": true,
             "assets": [
               "apps/example/src/favicon.ico",
-              "apps/example/src/assets"
+              "apps/example/src/assets",
+              {
+                "glob": "**/*.svg",
+                "input": "node_modules/ionicons/dist/ionicons/svg",
+                "output": "./svg"
+              }
             ],
-            "styles": ["apps/example/src/styles.css"],
+            "styles": [
+              "apps/example/src/styles.css",
+              {
+                "input": "node_modules/@ionic/angular/css/normalize.css"
+              },
+              {
+                "input": "node_modules/@ionic/angular/css/structure.css"
+              },
+              {
+                "input": "node_modules/@ionic/angular/css/typography.css"
+              },
+              {
+                "input": "node_modules/@ionic/angular/css/core.css"
+              },
+              {
+                "input": "node_modules/@ionic/angular/css/padding.css"
+              },
+              {
+                "input": "node_modules/@ionic/angular/css/float-elements.css"
+              },
+              {
+                "input": "node_modules/@ionic/angular/css/text-alignment.css"
+              },
+              {
+                "input": "node_modules/@ionic/angular/css/text-transformation.css"
+              },
+              {
+                "input": "node_modules/@ionic/angular/css/flex-utils.css"
+              },
+              {
+                "input": "apps/example/src/theme/variables.css"
+              }
+            ],
             "scripts": []
           },
           "configurations": {
@@ -90,6 +128,30 @@
             "passWithNoTests": true,
             "setupFile": "apps/example/src/test-setup.ts"
           }
+        },
+        "ionic-cordova-serve": {
+          "builder": "@ionic/angular-toolkit:cordova-serve",
+          "options": {
+            "cordovaBuildTarget": "example:ionic-cordova-build",
+            "devServerTarget": "example:serve"
+          },
+          "configurations": {
+            "production": {
+              "cordovaBuildTarget": "example:ionic-cordova-build:production",
+              "devServerTarget": "example:serve:production"
+            }
+          }
+        },
+        "ionic-cordova-build": {
+          "builder": "@ionic/angular-toolkit:cordova-build",
+          "options": {
+            "browserTarget": "example:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "example:build:production"
+            }
+          }
         }
       }
     },
@@ -136,6 +198,7 @@
   },
   "cli": {
     "defaultCollection": "@nrwl/angular",
+    "packageManager": "yarn",
     "analytics": false
   },
   "schematics": {
