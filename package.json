@@ -2,6 +2,9 @@
   "name": "ngx-ionic-extended",
   "version": "0.0.0",
   "license": "MIT",
+  "author": "Ahmed Raza <hafizahmedmoon@gmail.com>",
+  "homepage": "https://github.com/HafizAhmedMoon/ngx-ionic-extended",
+  "repository": "https://github.com/HafizAhmedMoon/ngx-ionic-extended.git",
   "scripts": {
     "ng": "nx",
     "postinstall": "node ./decorate-angular-cli.js && ngcc --properties es2015 browser module main --first-only --create-ivy-entry-points",
