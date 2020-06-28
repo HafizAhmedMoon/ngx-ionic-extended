@@ -7,7 +7,7 @@
       "schematics": {},
       "root": "apps/example",
       "sourceRoot": "apps/example/src",
-      "prefix": "ngx-ionic-extended",
+      "prefix": "example",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
@@ -134,7 +134,7 @@
       "projectType": "library",
       "root": "libs/ngx-ionic-extended",
       "sourceRoot": "libs/ngx-ionic-extended/src",
-      "prefix": "ngx-ionic",
+      "prefix": "ngx-ion",
       "architect": {
         "build": {
           "builder": "@nrwl/angular:package",
