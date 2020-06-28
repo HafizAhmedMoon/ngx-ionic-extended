@@ -1,0 +1,20 @@
+<ion-button (click)="modalOpen = !modalOpen"
+  >Open Modal with template</ion-button
+>
+<ngx-ion-modal *ngIf="modalOpen" (didDismiss)="modalOpen = false">
+  <ng-template>
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>Modal with template</ion-title>
+        <ion-buttons slot="end">
+          <ion-button (click)="modalOpen = false">
+            <ion-icon slot="icon-only" name="close"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
+    <div class="ion-padding ion-text-center">
+      <ion-text>Modal content</ion-text>
+    </div>
+  </ng-template>
+</ngx-ion-modal>

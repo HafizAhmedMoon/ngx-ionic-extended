@@ -1,1 +1,2 @@
-export * from './lib/ngx-ionic-extended.module';
+export * from './lib/modal/modal.component';
+export * from './lib/modal/modal.module';

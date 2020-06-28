@@ -1,10 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'ngx-ionic-extended-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
+  selector: 'example-root',
+  templateUrl: 'app.component.html',
 })
-export class AppComponent {
-  title = 'example';
-}
+export class AppComponent {}
